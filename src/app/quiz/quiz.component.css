@@ -1,0 +1,17 @@
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 1px solid blue;
+  text-decoration: none;
+}
+.quizlist {
+  column-span: 2;
+}
+.quiznames {
+  float: left;
+}
+.clock {
+  float: right
+}

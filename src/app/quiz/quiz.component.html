@@ -1,0 +1,25 @@
+<div class="quizlist">
+  <div class="quiznames">
+    Choose one quiz to register
+    <div>
+      <ul *ngFor="let quiz of quizzes; let i = index">
+        <li><a (click) = "showQuizDetail(quiz)" >Quiz{{i+1}}</a></li>
+      </ul>
+    </div>
+    <div [hidden] = '!quizDetail.timeLimit'>
+      <p>TimeLimit: {{quizDetail.timeLimit}}</p>
+      <p>Date: {{quizDetail.date}}</p>
+      <p>Start Time: {{quizDetail.startTime}}</p>
+      <p>
+        <button (click) = "enterQuiz()" *ngIf = 'quizDetail.isRegistered' [disabled] = '!canEnterQuiz'>Enter</button>
+        <button (click) = "registerinQuiz()" [disabled] = 'quizDetail.isRegistered'>
+          <span *ngIf = '!quizDetail.isRegistered'>Register</span>
+          <span *ngIf = 'quizDetail.isRegistered'>Registered</span>
+        </button>
+      </p>
+    </div>
+  </div>
+  <div class="clock">
+    <p>{{time | date: 'hh:mm:ss a'}}</p>
+  </div>
+</div>

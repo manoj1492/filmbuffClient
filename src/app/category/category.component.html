@@ -1,0 +1,8 @@
+<div>
+  Choose one category to enter a quiz
+  <div>
+    <ul *ngFor="let category of categories">
+      <li><a [routerLink]="['/quiz', category.id]">{{category.name}}</a></li>
+    </ul>
+  </div>
+</div>
