@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,15 @@ import { QuestionComponent } from './question/question.component';
 import { HomeComponent } from './home/home.component';
 import { CategoryComponent } from './category/category.component';
 import { QuizDetailComponent } from './quiz-detail/quiz-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ScoreDialogComponent } from './score-dialog/score-dialog.component';
+import { LoginComponent } from './login/login.component';
+import { TokenInterceptor } from './auth/TokenInterceptor';
 
 @NgModule({
   declarations: [
@@ -19,15 +28,38 @@ import { QuizDetailComponent } from './quiz-detail/quiz-detail.component';
     QuestionComponent,
     HomeComponent,
     CategoryComponent,
-    QuizDetailComponent
+    QuizDetailComponent,
+    ScoreDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTabsModule
   ],
-  providers: [],
+  entryComponents: [
+    ScoreDialogComponent,
+    LoginComponent
+  ],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

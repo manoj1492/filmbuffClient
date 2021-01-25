@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { QuizModel } from '../models/QuizModel';
-import { QuizService } from '../services/quiz.service';
+import { QuizModel } from './QuizModel';
+import { QuizService } from './quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -32,6 +32,7 @@ export class QuizComponent implements OnInit {
 
   showQuizDetail(quiz: QuizModel): void {
     this.quizDetail = quiz;
+    this.canEnterQuiz = false;
   }
 
   registerinQuiz(): void {
@@ -54,7 +55,6 @@ export class QuizComponent implements OnInit {
   enterQuiz() {
     this.quizService.setQuizQuestionLimit(this.quizDetail.questionLimit);
     this.quizService.enterQuiz(this.quizDetail.id.toString()).subscribe(message => {
-      console.log(message);
       this.router.navigate(['quizDetail']);
     });
   }

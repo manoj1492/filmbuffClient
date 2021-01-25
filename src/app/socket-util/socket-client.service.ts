@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Message, Client, over , Subscription} from 'webstomp-client';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SocketClientState } from '../models/socketclientstate';
+import { SocketClientState } from './socketclientstate';
 import * as SockJS from 'sockjs-client';
 import { environment } from 'src/environments/environment';
 import { filter, first, switchMap } from 'rxjs/operators';

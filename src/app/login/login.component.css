@@ -1,0 +1,10 @@
+.loginbox .signupbox{
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+

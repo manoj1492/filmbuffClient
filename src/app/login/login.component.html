@@ -1,0 +1,57 @@
+<mat-tab-group dynamicHeight>
+  <mat-tab label= "Login">
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="loginbox">
+        <mat-error *ngIf="loginError != ''">{{loginError}}</mat-error>
+        <br />
+        <mat-form-field>
+          <mat-label>Email address</mat-label>
+          <input matInput [formControl]="loginFormControl.email">
+          <mat-error *ngIf="loginFormControl.email.invalid">{{getLoginEmailErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input type="password" matInput [formControl]="loginFormControl.password">
+          <mat-error *ngIf="loginFormControl.password.invalid">{{getLoginPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-dialog-actions>
+          <button type="submit" [disabled] = "loginForm.invalid" mat-button class="mat-elevation-z4">Sign In</button>
+        </mat-dialog-actions>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="Sign Up">
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="register()"></form>
+      <div class="signupbox">
+        <mat-form-field>
+          <mat-label>FirstName</mat-label>
+          <input matInput [formControl]="registerFormControl.firstname">
+          <mat-error *ngIf="registerFormControl.firstname.invalid">{{getRegisterFirstNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>LastName</mat-label>
+          <input matInput [formControl]="registerFormControl.lastname">
+          <mat-error *ngIf="registerFormControl.lastname.invalid">{{getRegisterLastNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Email address</mat-label>
+          <input matInput [formControl]="registerFormControl.email">
+          <mat-error *ngIf="registerFormControl.email.invalid">{{getRegisterEmailErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input type="password" matInput [formControl]="registerFormControl.password">
+          <mat-error *ngIf="registerFormControl.password.invalid">{{getRegisterPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-dialog-actions>
+          <button type = "submit" [disabled] = "registerForm.invalid" mat-button class="mat-elevation-z4">Create Account</button>
+        </mat-dialog-actions>
+      </div>
+  </mat-tab>
+</mat-tab-group>

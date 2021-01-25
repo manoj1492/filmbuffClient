@@ -1,11 +1,10 @@
-import { QuestionAnswerModel } from './../models/QuestionAnswerModel';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { QUIZ } from '../app.constants';
-import { QuestionModel } from '../models/QuestionModel';
-import { QuizModel } from '../models/QuizModel';
+import { QuizModel } from './QuizModel';
+import { QuestionAnswerModel } from '../question/QuestionAnswerModel';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +12,7 @@ import { QuizModel } from '../models/QuizModel';
 export class QuizService {
 
   quizQuestionLimit: number;
+  quizScore: number;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -46,6 +46,14 @@ export class QuizService {
 
   getQuizQuestionLimit(): number {
     return this.quizQuestionLimit;
+  }
+
+  setQuizScore(score: number): void {
+    this.quizScore = score;
+  }
+
+  getQuizScore(): number {
+    return this.quizScore;
   }
 
   showResults(answers: QuestionAnswerModel[]) {
