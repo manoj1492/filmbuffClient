@@ -10,13 +10,13 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // We can’t tamper with the original request–it needs to be immutable. To make changes we need to clone the original request
-    /* if (!request.headers.get('skip')) {
+    if (!request.headers.get('skip')) {
       request = request.clone({
         setHeaders: {
           Authorization: 'Bearer ' + this.authService.getToken()
         }
       });
-    } */
+    }
 
     return next.handle(request);
   }

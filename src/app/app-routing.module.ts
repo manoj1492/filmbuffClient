@@ -7,8 +7,8 @@ import { QuizComponent } from './quiz/quiz.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent, canActivate : [AuthGuardService]},
+  {path: 'home', component: HomeComponent, canActivate : [AuthGuardService]},
   {path: 'quiz/:id', component: QuizComponent, canActivate : [AuthGuardService]},
   {path: 'quizDetail', component: QuizDetailComponent}
 ];

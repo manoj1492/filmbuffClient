@@ -13,7 +13,8 @@ export class AuthService {
 constructor(private httpClient: HttpClient) { }
 
 login(loginModel: LoginModel) {
-  return this.httpClient.post<any>(environment.auth + LOGIN , loginModel, {headers: {skip: 'true'}});
+  //return this.httpClient.post<any>(environment.auth + LOGIN , loginModel, {headers: {skip: 'true'}});
+  return this.httpClient.post<any>(environment.auth + LOGIN , loginModel);
 }
 
 setSession(authResult: any) {
@@ -21,6 +22,7 @@ setSession(authResult: any) {
 
   localStorage.setItem('id_token', authResult.idToken);
   localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()) );
+  console.log(authResult.user);
 }
 
 logout() {

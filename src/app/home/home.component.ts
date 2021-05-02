@@ -1,7 +1,6 @@
 import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(public dialog: MatDialog, private authService: AuthService) { }
 
   ngOnInit() {
-
-    /* const dialogRef = this.dialog.open(
-        LoginComponent,
-        { height: 'auto', width: 'auto', disableClose: true}
-      );
- */
+    console.log("In Home");
   }
 
   logout() {

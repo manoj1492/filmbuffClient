@@ -11,13 +11,13 @@ export class AuthGuardService implements CanActivate {
 
   constructor(public authService: AuthService, public router: Router, public dialog: MatDialog) { }
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
-    /* if (!this.authService.isLoggedIn()) {
+    if (!this.authService.isLoggedIn()) {
       const dialogRef = this.dialog.open(
         LoginComponent,
         { height: 'auto', width: 'auto'}
       );
       return false;
-    } */
+    }
     return new Promise(resolve => {
         if (!this.authService.isLoggedIn()) {
           const dialogRef = this.dialog.open(
@@ -26,7 +26,7 @@ export class AuthGuardService implements CanActivate {
           );
           resolve(true);
         }
-        resolve(false); }
+        resolve(true); }
       );
   }
 
