@@ -14,7 +14,7 @@ export class AuthGuardService implements CanActivate {
     if (!this.authService.isLoggedIn()) {
       const dialogRef = this.dialog.open(
         LoginComponent,
-        { height: 'auto', width: 'auto'}
+        { height: 'auto', width: 'auto', disableClose: true}
       );
       return false;
     }
@@ -22,7 +22,7 @@ export class AuthGuardService implements CanActivate {
         if (!this.authService.isLoggedIn()) {
           const dialogRef = this.dialog.open(
             LoginComponent,
-            { height: 'auto', width: 'auto'}
+            { height: 'auto', width: 'auto' }
           );
           resolve(true);
         }

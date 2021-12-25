@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  websocketapi: 'http://localhost:8761/api/filmbuff/websocket',
-  auth: 'http://localhost:8761/auth/',
-  api: 'http://localhost:8761/api/filmbuff/v1/'
+  websocketapi: 'http://localhost:8010/api/websocket',
+  auth: 'http://localhost:8010/auth/',
+  api: 'http://localhost:8010/api/v1/'
 
 };
 

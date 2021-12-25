@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "b419b5b5-9bfb-4d21-9a0d-702caf5da550"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -25,11 +28,17 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/fonts/roboto.css",
+              "src/assets/fonts/material-icons.css"
             ],
             "scripts": []
           },
           "configurations": {
+            "development":{
+              "sourceMap": true,
+              "optimization": false
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -37,10 +46,13 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                 "styles": true,
+                 "fonts": false
+              },
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -67,6 +79,10 @@
             "browserTarget": "filmbuffClient:build"
           },
           "configurations": {
+            "development": {
+              "browserTarget": "filmbuffClient:build:development"
+            },
+
             "production": {
               "browserTarget": "filmbuffClient:build:production"
             }

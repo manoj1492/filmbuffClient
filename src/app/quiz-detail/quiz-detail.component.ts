@@ -72,6 +72,8 @@ export class QuizDetailComponent implements OnInit {
   }
 
   calculateQuizOverTime(): number {
+    console.log("Quiz question limit: " + this.quizService.getQuizQuestionLimit());
+    console.log("Quiz Over time: " + QUIZ_QUESTION_TIME_GAP * 1000 * this.quizService.getQuizQuestionLimit());
     return QUIZ_QUESTION_TIME_GAP * 1000 * this.quizService.getQuizQuestionLimit();
   }
 

@@ -1,10 +1,12 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { Message, Client, over , Subscription} from 'webstomp-client';
+import { Message, Client, over , Subscription, ConnectionHeaders} from 'webstomp-client';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SocketClientState } from './socketclientstate';
 import * as SockJS from 'sockjs-client';
 import { environment } from 'src/environments/environment';
 import { filter, first, switchMap } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,7 @@ export class SocketClientService implements OnDestroy {
     return message.body;
   }
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.client = over(new SockJS(environment.websocketapi));
     this.state = new BehaviorSubject<SocketClientState>(SocketClientState.ATTEMPTING);
     this.client.connect({}, () => {

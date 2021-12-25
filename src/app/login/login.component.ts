@@ -51,8 +51,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.loginForm.getRawValue()).subscribe(
       (response) => {
-        if (response.body) {
-          this.authService.setSession(response.body);
+        if (response !=  null) {
+          this.authService.setSession(response);
           this.router.navigate(['home']);
           this.dialogRef.close();
         }
