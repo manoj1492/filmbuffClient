@@ -55,6 +55,7 @@ export class QuizDetailComponent implements OnInit {
       this.quizStarted = true;
       setTimeout(() => {
         this.quizEnded = true;
+        this.socketClientService.ngOnDestroy();
       }, this.calculateQuizOverTime() );
     }
 
